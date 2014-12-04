@@ -92,7 +92,7 @@ public class ExampleBot extends Twitchbot {
 		 * You want every MOD (that's the "true" below) of your channel to be able to bet virtual money on either "blue" or "red" in your channel.
 		 * "ReactionConditionedRegex" does the same as ReactionConditioned, but also checks against a regular expression!
 		 */
-		Reaction betReaction = new ReactionConditionedRegex(mainChannel, ANY, true, Pattern.compile("^!bet 0*([0-9]{1,9}) (blue|red)", Pattern.CASE_INSENSITIVE)) {
+		Reaction betReaction = new ReactionConditionedRegex(mainChannel, ANY, true, Pattern.compile("^!bet 0*([0-9]{1,9}) (blue|red)($|\\s)", Pattern.CASE_INSENSITIVE)) {
 			public ReactionResult executeAccepted(String channel, String sender, boolean isSenderMod, String message, Date time, Matcher regexMatcher) {
 				// you can do the same as before, plus retrieving the matched groups of the regular expression!
 				int bet = Integer.parseInt(regexMatcher.group(1)); // must be parsable because of regex
