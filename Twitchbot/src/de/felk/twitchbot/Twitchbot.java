@@ -55,10 +55,12 @@ public abstract class Twitchbot extends PircBot {
 				@SuppressWarnings("resource")
 				Scanner in = new Scanner(System.in);
 				String line = "";
-				while (true) {
+				while (in.hasNextLine()) {
 					line = in.nextLine();
 					onMessage(CONSOLE, CONSOLE, CONSOLE, CONSOLE, line);
 				}
+				// CTRL+D
+				quit("Console ended inputstream with CTRL+D");
 			}
 		});
 		cmdThread.setDaemon(true);
