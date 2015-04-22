@@ -28,6 +28,9 @@ public abstract class Twitchbot extends PircBot {
 	
 	protected final HashSet<String> ANY = null;
 	protected final String CONSOLE = "console";
+	
+	protected String ip = "irc.twitch.tv";
+	protected int port = 6667;
 
 	public Twitchbot(String name, String oauth) {
 
@@ -103,7 +106,7 @@ public abstract class Twitchbot extends PircBot {
 	protected abstract void init();
 
 	private void connect() throws IOException, IrcException {
-		this.connect("irc.twitch.tv", 6667, oauth);
+		this.connect(ip, port, oauth);
 		out("Connected!");
 		joinChannels();
 	}
